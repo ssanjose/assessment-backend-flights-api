@@ -13,6 +13,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //  ----------------------------------------------------------------
+//  ----------------   Locals/Variables to store data
+// app.locals to be accessed from all routes
+// Map is used for structure/storage for easy lookup for uniqueness, and other validations.
+app.locals.tickets = new Map();
+app.locals.flights = new Map();
+
+//  ----------------------------------------------------------------
 //  ----------------   ROUTES
 app.use('/api', routes);
 
