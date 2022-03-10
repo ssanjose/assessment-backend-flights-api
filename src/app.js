@@ -16,8 +16,45 @@ app.use(express.json());
 //  ----------------   Locals/Variables to store data
 // app.locals to be accessed from all routes
 // Map is used for structure/storage for easy lookup for uniqueness, and other validations.
+
+// stores ticket details per seat
 app.locals.tickets = new Map();
+/* sample data
+    req.app.locals.tickets.set(event["ticketId"],
+        {
+            ticketId: event["ticketId"],
+            flightNumber: event["flightNumber"],
+            seatNumber: event["seatNumber"],
+            ticketCost: event["ticketCost"],
+        });
+*/
+
+// stores ticket numbers per flight
 app.locals.flights = new Map();
+/* sample data
+    req.app.locals.flights.set(event["flightNumber"],
+        {
+            flightNumber: event["flightNumber"],
+            flightDate: event["flightDate"],
+            seats: [
+                "ticketId1",
+                "ticketId2",
+            ],
+        });
+*/
+
+// stores flights per date
+app.locals.dates = new Map();
+/* sample data
+    app.locals.dates.set("2020-01-01",
+        {
+            date: "2020-01-01",
+            flights: [
+                "AA123",
+                "AA456",
+            ],
+        });
+*/
 
 //  ----------------------------------------------------------------
 //  ----------------   ROUTES
