@@ -1,14 +1,13 @@
 import express from 'express';
-import { ticketPost } from '../controllers/ticket.controller';
+import { postTicket } from '../controllers/ticket.controller';
 export const ticket = express.Router();
 
 // Ticket routes
-// req.app.locals.tickets is a Map
 ticket.post('/', (req, res) => {
     try {
-        let ticketMessage = ticketPost(req);
+        let ticketMessage = postTicket(req);
 
-        if (ticketMessage === "") {
+        if (!ticketMessage) {
             res.status(200).json({
                 status: "success",
             });
