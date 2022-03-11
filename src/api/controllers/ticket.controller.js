@@ -3,11 +3,12 @@ import { createFlight } from "../services/flight.service";
 import { uploadTicket } from "../services/ticket.service";
 import { validateDate } from "../validations/date.validation";
 import { validateFlight } from "../validations/flight.validation";
+import { validateTicket } from "../validations/ticket.validation";
 
 export const ticketPost = (req) => {
     try {
         // validate date
-        if (!validateDate(req.body["flightDate"]))
+        if (!validateDate(req.body["event"]["flightDate"]))
             return "Invalid flight date";
 
         // validate flight
@@ -28,7 +29,7 @@ export const ticketPost = (req) => {
             else if (flightCode === 1)
                 flight = moveFlightToNewDate(req.app.locals.flights, req.app.locals.dates, date, req.body["event"]);
 
-            uploadTicket(req.app.locals.flights, req.app.locals.tickets, flight, req.body["event"]);
+            uploadTicket(req.app.locals.flights, req.app.locals.tickets, flight || flightCode, req.body["event"]);
             return "";
         }
         else {
