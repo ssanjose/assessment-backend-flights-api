@@ -36,7 +36,7 @@ app.locals.flights = new Map();
         {
             flightNumber: event["flightNumber"],
             flightDate: event["flightDate"],
-            seats: [
+            seats: [                // seats are array of ticketIds who own a seat in this flight
                 "ticketId1",
                 "ticketId2",
             ],
