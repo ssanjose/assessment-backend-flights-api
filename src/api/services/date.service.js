@@ -1,8 +1,8 @@
 export const moveFlightToNewDate = (flights, dates, newDate, event) => {
     // get date from date map
-    let date = dates.get(event["flightDate"]);
+    let date = dates.get(flights.get(event["flightNumber"])["flightDate"]);
 
-    // remove flights from date flights array
+    // remove flight number from date flights array
     date["flights"].splice(date["flights"].indexOf(event["flightNumber"]), 1);
 
     // add flight to new date
