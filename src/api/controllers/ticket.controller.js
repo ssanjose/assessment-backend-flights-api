@@ -5,7 +5,7 @@ import { validateDate } from "../validations/date.validation";
 import { validateFlight } from "../validations/flight.validation";
 import { validateTicket } from "../validations/ticket.validation";
 
-export const ticketPost = (req) => {
+export const postTicket = (req) => {
     try {
         // validate date
         if (!validateDate(req.body["event"]["flightDate"]))
@@ -18,23 +18,20 @@ export const ticketPost = (req) => {
         let ticketMessage = validateTicket(req.app.locals.flights, req.app.locals.tickets, req.body["event"]);
 
         // upload ticket or return error
-        if (ticketMessage === "") {
-            // create date if it doesn't exist
-            let date = createDate(req.app.locals.dates, req.body["event"]);
-            let flight;
-
-            // update flight
-            if (flightCode === 0)
-                flight = createFlight(date, req.app.locals.flights, req.body["event"]);
-            else if (flightCode === 1)
-                flight = moveFlightToNewDate(req.app.locals.flights, req.app.locals.dates, date, req.body["event"]);
-
-            uploadTicket(req.app.locals.flights, req.app.locals.tickets, flight || flightCode, req.body["event"]);
-            return "";
-        }
-        else {
+        if (ticketMessage !== "")
             return ticketMessage;
-        }
+
+        // create date if it doesn't exist
+        let date = createDate(req.app.locals.dates, req.body["event"]);
+        let flight;
+
+        // update flight
+        if (flightCode === 0)
+            flight = createFlight(date, req.app.locals.flights, req.body["event"]);
+        else if (flightCode === 1)
+            flight = moveFlightToNewDate(req.app.locals.flights, req.app.locals.dates, date, req.body["event"]);
+
+        uploadTicket(req.app.locals.flights, req.app.locals.tickets, flight || flightCode, req.body["event"]);
     }
     catch (error) {
         console.log(error);

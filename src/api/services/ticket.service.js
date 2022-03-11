@@ -13,4 +13,7 @@ export const uploadTicket = (flights, tickets, flight, event) => {
 
     // add ticket id to flight's seats array
     flight["seats"].push(event["ticketId"]);
+
+    // update flight revenue
+    flight["revenue"] += event["ticketCost"];
 };
