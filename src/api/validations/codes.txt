@@ -1,0 +1,17 @@
+    /* ticket codes
+        0 - ok
+        1 - ticketId is required
+        2 - flightNumber is required
+        3 - seatNumber is required
+        4 - ticketCost is required
+        5 - ticketCost is not a number
+        6 - ticketId already exists
+        7 - seatNumber is not alpha numeric
+        8 - seatNumber already exists in flight
+    */
+
+    /* flight codes
+        0 - flight does not exist
+        1 - flight date exists and has changed
+        2 - flight date exists and has not changed
+    */
