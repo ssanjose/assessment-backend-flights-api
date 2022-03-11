@@ -1,4 +1,4 @@
-export const moveFlightToNewDate = (flights, dates, event) => {
+export const moveFlightToNewDate = (flights, dates, newDate, event) => {
     // get date from date map
     let date = dates.get(event["flightDate"]);
 
@@ -6,16 +6,25 @@ export const moveFlightToNewDate = (flights, dates, event) => {
     date["flights"].splice(date["flights"].indexOf(event["flightNumber"]), 1);
 
     // add flight to new date
-    let newDate = dates.get(event["newFlightDate"]);
-    if (!newDate) {
-        dates.set(event["newFlightDate"], {
-            date: event["newFlightDate"],
-            flights: [event["flightNumber"]]
-        });
-    }
-    else
-        newDate["flights"].push(event["flightNumber"]);
+    newDate["flights"].push(event["flightNumber"]);
 
+    let flight = flights.get(event["flightNumber"]);
     // update flight date
-    flights.get(event["flightNumber"])["flightDate"] = event["flightDate"];
+    flight["flightDate"] = event["flightDate"];
+
+    return flight;
+}
+
+export const createDate = (dates, event) => {
+    // check if date already exists, if not create it
+    let date = dates.get(event["flightDate"]);
+
+    if (!date) {
+        date = {
+            date: event["flightDate"],
+            flights: []
+        }
+        dates.set(event["flightDate"], date);
+    }
+    return date;
 }

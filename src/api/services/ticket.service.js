@@ -1,6 +1,6 @@
 
 // Uploads ticket to the app.locals.tickets Map
-export const uploadTicket = (flights, tickets, event) => {
+export const uploadTicket = (flights, tickets, flight, event) => {
     // upload ticket to tickets Map
     tickets.set(event["ticketId"],
         {
@@ -12,5 +12,5 @@ export const uploadTicket = (flights, tickets, event) => {
     );
 
     // add ticket id to flight's seats array
-    flights.get(event["flightNumber"]).seats.push(event["ticketId"]);
+    flight.seats.push(event["ticketId"]);
 };

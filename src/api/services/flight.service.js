@@ -1,10 +1,14 @@
-export const createFlight = (flights, event) => {
+export const createFlight = (date, flights, event) => {
     // creates flight map data
-    flights.set(event["flightNumber"],
-        {
-            flightNumber: event["flightNumber"],
-            flightDate: event["flightDate"],
-            seats: [],
-        }
-    );
+    let flight = {
+        flightNumber: event["flightNumber"],
+        flightDate: event["flightDate"],
+        seats: []
+    }
+    flights.set(event["flightNumber"], flight);
+
+    // add flight number to date flights array
+    date["flights"].push(event["flightNumber"]);
+
+    return flight;
 }
