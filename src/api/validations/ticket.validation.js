@@ -39,7 +39,7 @@ export const validateTicket = (flights, tickets, event) => {
     // check if seatNumber is unique per flight
     // if it is not, return it already exists
     if (checkSeatInFlight(flights, event["flightNumber"], event["seatNumber"]))
-        return "seatNumber already exists in flight";
+        return "seatNumber already taken";
 
     return "";
 };
