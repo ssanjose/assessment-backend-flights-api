@@ -1,6 +1,6 @@
 import express from 'express';
-import { ticket } from './ticket.route';
-import { flight } from './flight.route';
+import { ticket } from './ticket.route.js';
+import { flight } from './flight.route.js';
 
 export const routes = express.Router();
 

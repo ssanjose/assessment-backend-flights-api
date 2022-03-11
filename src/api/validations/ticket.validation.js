@@ -1,4 +1,4 @@
-import { checkSeatInFlight } from "../helpers/getSeatInFlight";
+import { checkSeatInFlight } from "../helpers/getSeatInFlight.js";
 
 // validates ticket data
 export const validateTicket = (flights, tickets, event) => {

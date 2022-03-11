@@ -1,5 +1,5 @@
-import { getFlightWithinDate } from "../services/flight.service";
-import { validateStartEndDates } from "../validations/date.validation";
+import { getFlightWithinDate } from "../services/flight.service.js";
+import { validateStartEndDates } from "../validations/date.validation.js";
 
 export const getAllFlights = (req) => {
     try {

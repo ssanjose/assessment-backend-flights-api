@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import { routes } from './api/routes/routes';
+import { routes } from './api/routes/routes.js';
 
 export const app = express();
 

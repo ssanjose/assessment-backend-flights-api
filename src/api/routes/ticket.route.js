@@ -1,5 +1,5 @@
 import express from 'express';
-import { postTicket } from '../controllers/ticket.controller';
+import { postTicket } from '../controllers/ticket.controller.js';
 export const ticket = express.Router();
 
 // Ticket routes

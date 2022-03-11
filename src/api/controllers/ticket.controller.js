@@ -1,9 +1,9 @@
-import { createDate, moveFlightToNewDate } from "../services/date.service";
-import { createFlight } from "../services/flight.service";
-import { uploadTicket } from "../services/ticket.service";
-import { validateDate } from "../validations/date.validation";
-import { validateFlight } from "../validations/flight.validation";
-import { validateTicket } from "../validations/ticket.validation";
+import { createDate, moveFlightToNewDate } from "../services/date.service.js";
+import { createFlight } from "../services/flight.service.js";
+import { uploadTicket } from "../services/ticket.service.js";
+import { validateDate } from "../validations/date.validation.js";
+import { validateFlight } from "../validations/flight.validation.js";
+import { validateTicket } from "../validations/ticket.validation.js";
 
 export const postTicket = (req) => {
     try {

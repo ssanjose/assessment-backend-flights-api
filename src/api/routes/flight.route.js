@@ -1,6 +1,5 @@
 import express from 'express';
-import { getAllFlights } from '../controllers/flight.controller';
-import { validateStartEndDates } from '../validations/date.validation';
+import { getAllFlights } from '../controllers/flight.controller.js';
 export const flight = express.Router();
 
 // Flight routes
