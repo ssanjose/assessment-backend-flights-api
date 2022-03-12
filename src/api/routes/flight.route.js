@@ -6,14 +6,13 @@ export const flight = express.Router();
 flight.get('/', (req, res) => {
     try {
         let flights = getAllFlights(req);
-        console.log(flights);
         // check if status is success or failed
         if (flights.statusMessage === "success") {
             res.status(200).json(flights.data);
         }
         else {
             res.status(400).json({
-                statusMessage: "failed",
+                status: "failed",
                 reason: flights.data
             });
         }

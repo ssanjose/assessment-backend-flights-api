@@ -15,8 +15,12 @@ export const getAllFlights = (req) => {
 
         return {
             statusMessage: "success",
-            data: getFlightWithinDate(req.app.locals.flights, req.app.locals.dates, req.query["startDate"], req.query["endDate"])
-        };
+            data: getFlightWithinDate(req.app.locals.flights,
+                req.app.locals.dates,
+                req.app.locals.tickets,
+                req.query["startDate"],
+                req.query["endDate"])
+        }
     }
     catch (error) {
         console.log(error);

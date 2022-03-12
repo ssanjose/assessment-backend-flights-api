@@ -14,7 +14,7 @@ export const createFlight = (date, flights, event) => {
     return flight;
 }
 
-export const getFlightWithinDate = (flights, dates, startDate, endDate) => {
+export const getFlightWithinDate = (flights, dates, tickets, startDate, endDate) => {
     // get all dates within range in the dates map
     let datesWithinRange = [];
     for (let [key, value] of dates) {
@@ -31,10 +31,15 @@ export const getFlightWithinDate = (flights, dates, startDate, endDate) => {
         for (let flightNumber of date["flights"]) {
             let flight = flights.get(flightNumber);
 
+            // turn ticketId into seatNumber
+            let seatsArray = [];
+            for (let seat of flight["seats"])
+                seatsArray.push(tickets.get(seat)["seatNumber"]);
+
             flightsArray.push({
                 flightNumber: flightNumber,
                 revenue: flight["revenue"],
-                occupiedSeats: flight["seats"]
+                occupiedSeats: seatsArray
             });
         }
 
